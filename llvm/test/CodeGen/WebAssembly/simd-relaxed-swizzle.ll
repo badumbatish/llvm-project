@@ -8,7 +8,7 @@ define <16 x i8> @swizzle_v16i8(<16 x i8> %a, <16 x i8> %b) {
 ; RELAXED-LABEL: swizzle_v16i8:
 ; RELAXED:         .functype swizzle_v16i8 (v128, v128) -> (v128)
 ; RELAXED-NEXT:  # %bb.0:
-; RELAXED-NEXT:    i8x16.swizzle $push0=, $0, $1
+; RELAXED-NEXT:    i8x16.relaxed_swizzle $push0=, $0, $1
 ; RELAXED-NEXT:    # fallthrough-return
 ;
 ; SIMD-LABEL: swizzle_v16i8:

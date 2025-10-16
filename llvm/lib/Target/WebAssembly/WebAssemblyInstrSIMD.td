@@ -1602,6 +1602,12 @@ defm RELAXED_SWIZZLE :
            (int_wasm_relaxed_swizzle (v16i8 V128:$src), (v16i8 V128:$mask)))],
          "i8x16.relaxed_swizzle\t$dst, $src, $mask", "i8x16.relaxed_swizzle", 0x100>;
 
+let AddedComplexity = 1 in {
+  def : Pat<(v16i8 (int_wasm_swizzle (v16i8 V128:$src), (v16i8 V128:$mask))),
+            (RELAXED_SWIZZLE (v16i8 V128:$src), (v16i8 V128:$mask))>,
+            Requires<[HasRelaxedSIMD]>;
+}
+
 //===----------------------------------------------------------------------===//
 // Relaxed floating-point to int conversions
 //===----------------------------------------------------------------------===//

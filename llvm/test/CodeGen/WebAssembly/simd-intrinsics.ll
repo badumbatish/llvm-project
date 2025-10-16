@@ -12,7 +12,7 @@ target triple = "wasm32-unknown-unknown"
 ; ==============================================================================
 ; CHECK-LABEL: swizzle_v16i8:
 ; CHECK-NEXT: .functype swizzle_v16i8 (v128, v128) -> (v128){{$}}
-; CHECK-NEXT: i8x16.swizzle $push[[R:[0-9]+]]=, $0, $1{{$}}
+; CHECK-NEXT: i8x16.relaxed_swizzle $push[[R:[0-9]+]]=, $0, $1{{$}}
 ; CHECK-NEXT: return $pop[[R]]{{$}}
 declare <16 x i8> @llvm.wasm.swizzle(<16 x i8>, <16 x i8>)
 define <16 x i8> @swizzle_v16i8(<16 x i8> %x, <16 x i8> %y) {
