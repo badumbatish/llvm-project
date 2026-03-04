@@ -505,8 +505,9 @@ Process::Process(lldb::TargetSP target_sp, ListenerSP listener_sp,
   OptionValueSP value_sp =
       m_collection_sp->GetPropertyAtIndex(ePropertyMemCacheLineSize)
           ->GetValue();
-  uint64_t platform_cache_line_size =
-      target_sp->GetPlatform()->GetDefaultMemoryCacheLineSize();
+  uint64_t platform_cache_line_size = 0;
+  if (PlatformSP platform_sp = target_sp->GetPlatform())
+    platform_cache_line_size = platform_sp->GetDefaultMemoryCacheLineSize();
   if (!value_sp->OptionWasSet() && platform_cache_line_size != 0)
     value_sp->SetValueAs(platform_cache_line_size);
 
