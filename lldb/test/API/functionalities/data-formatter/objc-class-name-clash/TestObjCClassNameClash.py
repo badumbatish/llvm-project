@@ -23,6 +23,4 @@ class ObjCClassNameClashTestCase(TestBase):
 
         self.expect("frame variable sample1", substrs=["x = 1"])
 
-        self.expect(
-            "frame variable sample", matching=False, substrs=["x = 1"]
-        )
+        self.expect("frame variable sample", substrs=["x = 1"])

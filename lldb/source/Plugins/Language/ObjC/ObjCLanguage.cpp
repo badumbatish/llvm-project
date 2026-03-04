@@ -874,6 +874,7 @@ lldb::TypeCategoryImplSP ObjCLanguage::GetFormatters() {
     DataVisualization::Categories::GetCategory(ConstString(GetPluginName()),
                                                g_category);
     if (g_category) {
+      g_category->AddLanguage(lldb::eLanguageTypeObjC);
       LoadCoreMediaFormatters(g_category);
       LoadObjCFormatters(g_category);
     }
